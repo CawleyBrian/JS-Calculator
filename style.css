@@ -1,0 +1,32 @@
+.main-container{
+    display: flex;
+    flex-direction: column;
+    border: black 3px solid;
+    justify-content: center;
+    width: 240px;
+    
+}
+.display{
+    border: black 3px solid;
+}
+.operations{
+    display: flex;
+    flex-direction: column;
+    padding-left: 9px;    
+}
+.button-container{
+    display: flex;
+    justify-content: center;
+}
+.num{
+    font-size: 38px;
+    margin: 3px;
+}
+.display{
+    height: 60px;
+}
+.operation{
+    width: 40px;
+    height: 30px;
+    margin: 3px;
+}
