@@ -61,7 +61,10 @@ const add = function(num1, num2) {
     }
 
     console.log(Number(newDisplay));
+
     return Number(newDisplay)    
+
+    
   }
 
 
@@ -78,6 +81,8 @@ numKeys.addEventListener('click', e=>{
   }
 });
 
+
+
 //Select Operator keys
 const operatorKeys = calculator.querySelector('.operations');
 
@@ -85,6 +90,10 @@ operatorKeys.addEventListener('click', e=>{
   if(e.target.matches('button')){
     operatorClicked(e.target.id);
   }
+  if(display.innerHTML.length > 11){
+    display.innerText = "Error";
+    overwrite = true;
+  };
 });
 
 let num1 = null;
@@ -127,14 +136,8 @@ function operatorClicked(operatorKey){
     overwrite = true;
     currentOp = operatorKey;
   }
-  
-
 
 }
-
-
-
-
 
 
 const display = document.getElementById("display");
@@ -155,5 +158,9 @@ function addToDisplay(num){
     overwrite=false;
   } else
   display.innerHTML += num;
+  if(display.innerHTML.length > 11){
+    display.innerText = "Error";
+    overwrite = true;
+  };
 
 }

@@ -7,28 +7,54 @@
     
 }
 #display{
-    border: pink 3px solid;
+    background-color: wheat;
     height: 50px;
-    font-size: 24px;
+    font-size: 35px;
     font-family: 'Courier New', Courier, monospace;
     word-wrap: break-word;
 }
 .operations{
     display: flex;
     flex-direction: column;
-    padding-left: 9px;    
 }
 .button-container{
     display: flex;
     justify-content: center;
+    background-color: lightgray;
 }
+
+.num-buttons{
+    margin: 10px
+}
+
+#AC{
+    font-size: 20px;;
+}
+
 .num{
-    font-size: 38px;
+    font-size: 35px;
     margin: 3px;
+    background-color: grey;
+    border-radius: 8px;
+    border-width: 0;
+    color: #333333;
+    cursor: pointer;
+    text-align: center;
 }
+.operation{
+    font-size: 25px;
+    background-color: grey;
+    border-radius: 8px;
+    border-width: 0;
+    cursor: pointer;
+    text-align: center;
+}
+
+
 .display{
     height: 60px;
     overflow-wrap: break-word;
+    
 }
 .operation{
     width: 40px;
@@ -37,8 +63,9 @@
 }
 
 .zero{
-    width: 85px;
+    width: 70px;
 }
 .dec{
     width: 35px;
 }
+
