@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="main-container">
-        <div id="display"></div>
+        <div id="display">0</div>
         <div class="button-container">
         <div class="num-buttons">
             <div class=row>
@@ -29,17 +29,18 @@
             <button class="num" id="9">9</button>
             </div>
             <div class=row2>
-            <button class="num" id="0">0</button>
-            <button class="num CE">CE</button>
+            <button class="num zero" id="0">0</button>
+            <button class="num dec" data-action="decimal">.</button>
         </div>
 
         </div>
         <div class="operations">
-            <button class="operation" id="add">+</button>
-            <button class="operation" id="sub">-</button>
-            <button class="operation" id="divide">/</button>
-            <button class="operation" id="mult">*</button>
-            <button class="operation" id="equals">=</button>
+            <button class="operation" data-action="add" id="add">+</button>
+            <button class="operation" data-action="subtract" id="sub">-</button>
+            <button class="operation" data-action="divide" id="divide">/</button>
+            <button class="operation" data-action="multiply" id="multiply">*</button>
+            <button class="operation" id="equals" data-acton="calculate">=</button>
+            <button class="operation AC" data-action="clear" id="AC">AC</button>
         </div>
     </div>
     </div>

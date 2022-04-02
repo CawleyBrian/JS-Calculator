@@ -10,6 +10,8 @@
     border: pink 3px solid;
     height: 50px;
     font-size: 24px;
+    font-family: 'Courier New', Courier, monospace;
+    word-wrap: break-word;
 }
 .operations{
     display: flex;
@@ -32,4 +34,11 @@
     width: 40px;
     height: 30px;
     margin: 3px;
+}
+
+.zero{
+    width: 85px;
+}
+.dec{
+    width: 35px;
 }

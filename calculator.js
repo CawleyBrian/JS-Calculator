@@ -1,8 +1,7 @@
-let total = 0;
 
-
+//Calculator operations functions
 const add = function(num1, num2) {
-    return num1 + num2;
+    return Number(num1) + Number(num2);
       
   };
   
@@ -40,9 +39,10 @@ const add = function(num1, num2) {
     return base;
   };
   
-let operator =""
 
-  function operate(operator, num1, num2){
+  //Calculate function - uses both numbers and selected operator
+  //returns value for display.
+  function calculate(operator, num1, num2){
     let newDisplay = 0;
 
     switch(operator){
@@ -60,70 +60,100 @@ let operator =""
         break;
     }
 
-    return newDisplay    
+    console.log(Number(newDisplay));
+    return Number(newDisplay)    
   }
 
-let display = document.getElementById("display")
 
-let appendMode = true;
+//Select number keys
+const calculator = document.querySelector('.main-container');
+const numKeys = calculator.querySelector('.num-buttons')
 
-
-  //check if in write mode (append mode)
-    //if true then append to display string
-    //else start new string, append mode = true
-function addToDisplay(string){
-
-  if(appendMode){
-    display.innerHTML += ""+this.id;
+//when element is pressed - check if it's a num key
+//then use innterText as parameter for addToDisplay
+numKeys.addEventListener('click', e=>{
+  if(e.target.matches('button')){
+  console.log("number button clicked");
+  addToDisplay(e.target.innerText);
   }
-  else{
-    appendMode = true;
-    display.innerHTML = this.id;
+});
 
-  }  
+//Select Operator keys
+const operatorKeys = calculator.querySelector('.operations');
+
+operatorKeys.addEventListener('click', e=>{
+  if(e.target.matches('button')){
+    operatorClicked(e.target.id);
+  }
+});
+
+let num1 = null;
+let num2 = null;
+currentOp = null;
+
+function operatorClicked(operatorKey){
+  console.log(operatorKey);
+
+  if(operatorKey === "AC"){
+    let num1 = null;
+    let num2 = null;
+    currentOp = null;
+    display.innerText = 0;
+    overwrite = true;
+    return;
+
+  } else if(operatorKey === "="){
+    returnedVal = calculate(currentOp, num1, num2);
+    console.log("Returned val: " + returnedVal);
+    display.innerText = returnedVal;
+    num1 =  returnedVal;
+    num2 = null
+    overwrite = true;
+    currentOp = null;
+    return
+  }
+
+  //Finish any current operation before saving the next operation
+    else if(currentOp === null || currentOp === "equals"){
+    console.log("storing " + display.innerHTML)
+    currentOp = operatorKey;
+    num1 = display.innerHTML;
+    overwrite = true;
+  } else {
+    num2 = display.innerHTML;
+    display.innerText = calculate(currentOp, num1, num2);
+    num1 = display.innerHTML;
+    num2 = null;
+    overwrite = true;
+    currentOp = operatorKey;
+  }
   
+
+
 }
 
-const updateTotal = function(){ 
 
 
-  let newTotal = operate(operator, Number(total), Number(display.innerHTML)) 
-  total = newTotal;
-  display.innerHTML = Number(total);
-  appendMode= false;
-  operator = this.id
-  console.log(this.id)
+
+
+
+const display = document.getElementById("display");
+
+//variable to track if display should be overwritten (or number should be appended)
+let overwrite = true;
+
+function addToDisplay(num){
+
+  //prevent more than 1 decimal point being added to the display string.
+  if(num==="." && display.innerHTML.includes(".")){
+    console.log("Decimal point already added");
+    return;
+  }
+
+  if(overwrite){
+    display.innerHTML = num;
+    overwrite=false;
+  } else
+  display.innerHTML += num;
+
 }
-
-
-  //event listner on each number button
-    //concatenate clicked button to display string
-
-//Add event listener to each num button.
-for (i=0;i<10;i++){
-  let numBtn = document.getElementById(i)
-  let numValue = numBtn.innerHTML;
-  numBtn.addEventListener('click', addToDisplay);
-}
-
-  let plus = document.getElementById("add");
-  plus.addEventListener('click', updateTotal)
-  
-   let sub = document.getElementById("sub");
-   sub.addEventListener('click', updateTotal)
-
-
-
-//initial total and display = 0
-
-//on click num button
-  //check if in write mode (append mode)
-    //if true then append to display string
-    //else start new string, append mode = true
-  
-
-//on click operate button (new fucntion)
-  //Update Display?
-  //appendMode = false;
-  //operator = this.id
-
