@@ -6,8 +6,10 @@
     width: 240px;
     
 }
-.display{
-    border: black 3px solid;
+#display{
+    border: pink 3px solid;
+    height: 50px;
+    font-size: 24px;
 }
 .operations{
     display: flex;
@@ -24,6 +26,7 @@
 }
 .display{
     height: 60px;
+    overflow-wrap: break-word;
 }
 .operation{
     width: 40px;
